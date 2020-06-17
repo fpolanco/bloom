@@ -1,4 +1,4 @@
-<h1>Products#index</h1>
+<h1>Plants</h1>
 <hr>
 <% @products.each do |p|%>
 <br>
@@ -6,5 +6,6 @@
 
 <br>
 
-    <%= link_to p.name, "/products/#{p.id}" %> 
+    <%= link_to p.name, product_path(p)%> 
+     
 <% end %>

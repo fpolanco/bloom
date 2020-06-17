@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users
 
   #Show and Edit Profile
-get '/profile', to: 'users#profile', as: 'profile'
+# get '/profile', to: 'users#profile', as: 'profile'
   
   root 'welcome#index'
 end

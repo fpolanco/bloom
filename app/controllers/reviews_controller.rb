@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     end
 
     def edit
+      @review = Review.find_by(id: params[:id])
     end
 
     def new
@@ -16,29 +17,33 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.new(review_params)
-    
+      product_id = request.referrer.split("/").last.to_i
+      user_id = params[:user][:id].to_i
+      content = params[:review][:content]
+      rating = params[:review][:rating]
+     
+        @review = Review.new(
+          product_id: product_id,
+          user_id: user_id,
+          content: content,
+          rating: rating
+        )
         respond_to do |format|
-          if @review.save
-            format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        
+          if @review.valid?
+            @review.save
+            
+            format.html { redirect_to product_path(product_id), notice: 'Review was successfully created.' }
             format.json { render :show, status: :created, location: @user }
           else
-            format.html { render :new }
+            format.html { redirect_to product_path(product_id) }
             format.json { render json: @review.errors, status: :unprocessable_entity }
           end
         end
     end
 
       def update
-        respond_to do |format|
-          if @review.update(review_params)
-            format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-            format.json { render :show, status: :ok, location: @review }
-          else
-            format.html { render :edit }
-            format.json { render json: @review.errors, status: :unprocessable_entity }
-          end
-        end
+      
       end
 
       def destroy
@@ -65,7 +70,7 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:content, :rating, :reviewer_id, :reviewee_id)
+      params.require(:review).permit(:content, :rating, :user_id, :product_id, :text)
     end
 end
 

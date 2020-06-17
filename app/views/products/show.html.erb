@@ -1,12 +1,16 @@
 <h1><%= @product.name %></h1>
-<p><%= @product.scientific_name%></p>
+<br>
+<em><%= @product.scientific_name%></em>
 <hr>
+<br>
 <p><%= @product.fun_fact%></p>
 
 <br>
-
-
-<%= form_with scope: :review, url:reviews_path, local: true do |form| %>
+<br>
+<br>
+<br>
+<br>
+<%= form_with scope: :review, url:reviews_path, method:"POST", local: true do |form| %>
 <p>
  <%= collection_select(:user, :id, @users, :id, :username) %>
 <br>
@@ -16,7 +20,7 @@
  
   <p>
     <%= form.label :Any_care_tips? %><br>
-    <%= form.text_area :text %>
+    <%= form.text_area :content %>
   </p>
  
   <p>
@@ -26,3 +30,6 @@
 
 
 
+<% @product.reviews.each do |r| %>
+     <p><%= r.content%></p>
+     <%end%>
