@@ -1,2 +1,28 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.name %></h1>
+<p><%= @product.scientific_name%></p>
+<hr>
+<p><%= @product.fun_fact%></p>
+
+<br>
+
+
+<%= form_with scope: :review, url:reviews_path, local: true do |form| %>
+<p>
+ <%= collection_select(:user, :id, @users, :id, :username) %>
+<br>
+<br>
+   <%= form.label :How_would_you_rate_this_plant? %><br>
+    <%= form.number_field :rating %>
+ 
+  <p>
+    <%= form.label :Any_care_tips? %><br>
+    <%= form.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+

@@ -1,2 +1,10 @@
 <h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<hr>
+<% @products.each do |p|%>
+<br>
+<br>
+
+<br>
+
+    <%= link_to p.name, "/products/#{p.id}" %> 
+<% end %>
