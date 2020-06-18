@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ h1 { size: 50%; color:lightblue;}
+
+ img { max-height: 2 rem;}

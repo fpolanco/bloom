@@ -4,6 +4,10 @@
 <hr>
 <br>
 <p><%= @product.fun_fact%></p>
+<% @plant_image = @product.name.gsub(/\s+/, "") + ".jpg" %>
+<% if @plant_image %>
+ <%= image_tag("productimages/#{@plant_image}") %>
+ <%end%>
 
 <br>
 <br>
@@ -12,7 +16,7 @@
  <%#= collection_select(:user, :id, @users, :id, :username) %>
 <br>
 <br>
-   <%= form.label :How_bossy_is_she? %>
+   <%= form.label :How_bossy_is_she_? %>
     <%= form.number_field :rating %>
  
   <p>  <br>    
@@ -30,8 +34,8 @@
 
 <% @product.reviews.each do |r| %>
      <p><%= r.content%></p>
-     <%=button_to "Delete Review", delete_review_path(r.id), :method => :delete %>
-     <%= link_to "<button>Edit Review</button>".html_safe, edit_review_path(r.id) %>
+     <%=button_to "Delete Review", delete_review_path(r.id), :method => :delete, :class=> "btn btn-primary btn-sm" %>
+     <%= link_to "<button>Edit Review</button>".html_safe, edit_review_path(r.id), :class=> "btn btn-secondary btn-sm" %>
      <%end%>
 
  
