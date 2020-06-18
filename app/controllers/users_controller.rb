@@ -24,16 +24,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(username: user_params[:username])
+    @user.password = user_params[:password]
+  
+    if @user.valid?
+      @user.save
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      session[:current_user] = @user
+
+      redirect_to @user
+    else
+      redirect_to user_path
     end
   end
 
@@ -51,12 +52,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:current_user] = nil
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    #@user.destroy
+
+    # Destroy user session
+    session[:current_user] = nil 
+
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: "You have been signed out!" }
       format.json { head :no_content }
     end
   end
@@ -69,6 +78,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
-    end
+      params.require(:user).permit(:username, :password, :password_confirmation)
+  end
 end

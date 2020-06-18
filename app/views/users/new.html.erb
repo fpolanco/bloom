@@ -5,6 +5,10 @@
 <%= form_with model: User.new, class: "" do |f| %>
    <%= f.label :Username %>
    <%= f.text_field :username %>
+     <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
 
    <%= f.submit "Create" %>
 <% end %>
