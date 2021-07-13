@@ -1,24 +1,15 @@
-# README
+# Bloom 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![](BLOOMdemo.gif)
 
-Things you may want to cover:
+# Features
 
-* Ruby version
+## CRUD Operations
+ - Users can create, edit and delete their comments and ratings
+ - All comments are rendered on detail page
+ - Users can log in and log out and update their passwords
 
-* System dependencies
+## ActiveRecord Associations
 
-* Configuration
+- There are 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
