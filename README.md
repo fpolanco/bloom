@@ -1,5 +1,7 @@
 # Bloom 
-![bloomscreenshot](https://user-images.githubusercontent.com/59297307/125378769-51df8980-e35d-11eb-9c9d-72b17d095b60.png)
+
+![Bloom](https://user-images.githubusercontent.com/59297307/125383228-1cd73500-e365-11eb-89fd-50e86328abef.png)
+
 
 # Motivation
 I attended the Flatiron school bootcamp during all the events that transpired in 2020, I had to find ways to maintain wellness and wellbeing. Plants can help us improve our physical and mental health. They are like kids  and we have to care for them to help them thrive. With Bloom plant parents can exchange the knowledge and keep their babies alive!
