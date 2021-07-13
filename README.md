@@ -1,9 +1,8 @@
 # Bloom 
+![bloomscreenshot](https://user-images.githubusercontent.com/59297307/125378769-51df8980-e35d-11eb-9c9d-72b17d095b60.png)
 
 # Motivation
-I attended Flatiron schoolbootcamp during all the events that transpired in 2020, I had to find ways to maintain wellness and wellbeing. I came across the healing properties of crystals and realized people have different ways of using crystals.
-
-For fun I thought it would be cool to create a web platform where individuals could exchange the knowledge of stone's healing properties. Users can submit comments to share information. Users can also save favorited crystals to favorites list.
+I attended the Flatiron school bootcamp during all the events that transpired in 2020, I had to find ways to maintain wellness and wellbeing. Plants can help us improve our physical and mental health. They are like kids  and we have to care for them to help them thrive. With Bloom plant parents can exchange the knowledge and keep their babies alive!
 
 ![](BLOOMdemo.gif)
 
@@ -35,7 +34,5 @@ For fun I thought it would be cool to create a web platform where individuals co
 - [ ] Improve OAuth
 - [ ] Implement React router
 
-## Author
-
-**Franchell Polanco**
-
+## Special Thanks
+* [Madhur Malhotra](https://www.linkedin.com/in/madhurxyz/) - For helping create the beautiful logo and powerpoint presentation. :green_heart:
