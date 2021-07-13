@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
     end
     
     def show
+      @users = User.all
     end
 
     def edit
@@ -18,7 +19,8 @@ class ReviewsController < ApplicationController
 
     def create
       product_id = request.referrer.split("/").last.to_i
-      user_id = params[:user][:id].to_i
+     
+      user_id = session[:current_user]["id"].to_i
       content = params[:review][:content]
       rating = params[:review][:rating]
      
@@ -43,13 +45,36 @@ class ReviewsController < ApplicationController
     end
 
       def update
-      
+        product_id = request.referrer.split("/").last.to_i
+        user_id = session[:current_user]["id"].to_i
+        content = params[:review][:content]
+        rating = params[:review][:rating]
+
+        review = Review.find(params[:id])
+        product_id = review.product.id
+
+        @review = Review.update(
+          content: content,
+          rating: rating
+        ).first
+        
+       redirect_to product_path(@review.product_id)
+
+      # call review instance update      find, update, and redirect product_path(pid)
+      # @review.product_id
+      # @review = Review.find_by(id: params[:id])
+      # redirect_to product_path(product_id)
+      # @review = Review.find(params[:id])
       end
 
       def destroy
-        @review.destroy
+        review = Review.find(params[:id])
+        product_id = review.product.id
+        review.destroy
         respond_to do |format|
-          format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+          format.html { redirect_to product_path(product_id), notice: 'Review was successfully destroyed.' }
+          # format.html { redirect_back(fallback_location: products_path), notice: 'Review was successfully destroyed.' }
+          # redirect_back(fallback_location: products_path)
           format.json { head :no_content }
         end
       end

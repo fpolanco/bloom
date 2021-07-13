@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MakeupProject</title>
+    <title>Bloom</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/1086d342b4.js" crossorigin="anonymous"></script> %>
 
-    <!-- for home page header text -->
-    <%# <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
-  </head> %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-  <body>
+   <body>
+<div>
+
+</div>
   
-    <!-- navbar for all pages  -->
-    <!-- "navbar fixed-top navbar-light bg-light" -->
-    <%# <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
-      <a href="/" class="navbar-brand"><i class="fas fa-beer" ></i>CleanMakeup</a>
 
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li>
-            <a href="/" class="nav-link">Search</a>
-          </li> %>
 
+<div style="margin-right: 10px">
+ <% if session[:current_user] %>
+    <%= link_to "Logout", user_path(session[:current_user]["id"]), method: :delete, data: { confirm: "Are you sure?" } %>  | <%= session[:current_user]["username"] %>
+<% else %>
+   <%= link_to "Login", new_sessions_path %>
+ <% end %>
+</div>
+
+<%= notice %>
     <%= yield %>
   </body>
 </html>

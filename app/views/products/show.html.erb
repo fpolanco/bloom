@@ -4,22 +4,24 @@
 <hr>
 <br>
 <p><%= @product.fun_fact%></p>
+<% @plant_image = @product.name.gsub(/\s+/, "") + ".jpg" %>
+<% if @plant_image %>
+ <%= image_tag("productimages/#{@plant_image}") %>
+ <%end%>
 
 <br>
 <br>
-<br>
-<br>
-<br>
-<%= form_with scope: :review, url:reviews_path, method:"POST", local: true do |form| %>
+<%= form_for @review do |form| %>
 <p>
- <%= collection_select(:user, :id, @users, :id, :username) %>
+ <%#= collection_select(:user, :id, @users, :id, :username) %>
 <br>
 <br>
-   <%= form.label :How_would_you_rate_this_plant? %><br>
+   <%= form.label :How_bossy_is_she_? %>
     <%= form.number_field :rating %>
  
-  <p>
-    <%= form.label :Any_care_tips? %><br>
+  <p>  <br>    
+              .:Love Tips:.
+    <%= form.label :How_do_you_care_for_her? %>
     <%= form.text_area :content %>
   </p>
  
@@ -32,4 +34,8 @@
 
 <% @product.reviews.each do |r| %>
      <p><%= r.content%></p>
+     <%=button_to "Delete Review", delete_review_path(r.id), :method => :delete, :class=> "btn btn-primary btn-sm" %>
+     <%= link_to "<button>Edit Review</button>".html_safe, edit_review_path(r.id), :class=> "btn btn-secondary btn-sm" %>
      <%end%>
+
+ 

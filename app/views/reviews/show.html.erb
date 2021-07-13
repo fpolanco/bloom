@@ -1,0 +1,19 @@
+<h1>Edit Your Review</h1>
+
+<%= form_for @review do |form| %>
+<p>
+ <%= collection_select(:user, :id, @users, :id, :username) %>
+<br>
+<br>
+   <%= form.label :How_would_you_rate_this_plant? %><br>
+    <%= form.number_field :rating %>
+ 
+  <p>
+    <%= form.label :Any_care_tips? %><br>
+    <%= form.text_area :content %>
+  </p>
+ 
+  <p>
+    <%= form.submit "Edit" %>
+  </p>
+<% end %>
